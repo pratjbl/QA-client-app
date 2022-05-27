@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins',sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: 'Poppins',sans-serif,
+    monospace;
+}
+/* @font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Poppins'),url('https://cdn.jsdelivr.net/gh/atulrana007/latest-auth0-code/dist/Poppins-Bold.ttf') format('truetype'); 
+} */
