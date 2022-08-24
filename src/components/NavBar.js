@@ -94,13 +94,12 @@ const NavBar = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   console.log("---->In the Navbar", finalState, currentValue);
-  console.log(configJson.domain);
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
 
   const logoutWithRedirect = () =>
-    (window.location = `https://idqa3.mcafee.com/logout?redirectTo=${window.location.origin}&clientId=${configJson.clientId}`);
+    (window.location = `https://idqa.mcafee.com/logout?redirectTo=${window.location.origin}&clientId=${configJson.clientId}`);
 
   return (
     <div className="nav-container">
