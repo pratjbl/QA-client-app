@@ -36,7 +36,7 @@ function MainComponent(props) {
 
         const optionsConn = {
           method: "GET",
-          url: `https://idqa3.mcafee.com/mfa/authenticators`,
+          url: `https://idqa.mcafee.com/mfa/authenticators`,
           headers: {
             "content-type": "application/json",
             authorization: "Bearer " + token,
