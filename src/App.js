@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Router, Route, Switch } from "react-router-dom";
 import { Container } from "reactstrap";
 
@@ -9,6 +9,7 @@ import Home from "./views/Home";
 import Profile from "./views/Profile";
 import ExternalApi from "./views/ExternalApi";
 import { useAuth0 } from "@auth0/auth0-react";
+import MainComponent from "./components/login-flow/MainComponent";
 import history from "./utils/history";
 
 // styles
@@ -32,8 +33,14 @@ const App = () => {
     idToken: "",
     refreshToken: "",
   });
+  const [responseForHomeRoute, setResponse] = useState({
+    AccessToken: "",
+    IdToken: "",
+  });
   const { isLoading, error } = useAuth0();
-
+  useEffect(() => {
+    console.log(responseForHomeRoute);
+  }, [responseForHomeRoute]);
   if (error) {
     return <div>Oops... {error.message}</div>;
   }
@@ -45,12 +52,16 @@ const App = () => {
   return (
     <Router history={history}>
       <div id="app" className="d-flex flex-column h-100">
-        <NavBar />
+        <NavBar response={responseForHomeRoute} setResponse={setResponse} />
         <Container className="flex-grow-1 mt-5">
           <Switch>
             <Route path="/" exact component={() => Home()} />
             <Route path="/profile" component={Profile} />
             <Route path="/external-api" component={ExternalApi} />
+            <Route path="/main-component">
+              <MainComponent response={responseForHomeRoute} />
+            </Route>
+
             <Route path="/otp" exact>
               <OTP
                 detailsState={detailsState}
