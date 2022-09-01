@@ -32,6 +32,7 @@ const NavBar = (props) => {
     loginWithRedirect,
     getAccessTokenSilently,
     getIdTokenClaims,
+    logout,
   } = useAuth0();
   const [finalState, setFinalState] = useState({});
   const getAccessToken = async () => {
@@ -100,7 +101,9 @@ const NavBar = (props) => {
   const toggle = () => setIsOpen(!isOpen);
 
   const logoutWithRedirect = () =>
-    (window.location = `https://idqa.mcafee.com/logout?redirectTo=${window.location.origin}&clientId=${configJson.clientId}`);
+    logout({
+      returnTo: window.location.origin,
+    });
 
   return (
     <div className="nav-container">
