@@ -22,17 +22,19 @@ const config = getConfig();
 const providerConfig = {
   domain: config.domain,
   clientId: config.clientId,
+  ...(config.audience ? { audience: config.audience } : null),
   redirectUri: window.location.origin,
-  useRefreshTokens: true,
-  audience: "https://api.mcafee.com",
+  scope:
+    "openid profile email enroll read:authenticators remove:authenticators",
   onRedirectCallback,
-  cacheLocation: "localstorage",
 };
+
+let customHeader = "";
 
 ReactDOM.render(
   <Provider store={store}>
     <Auth0Provider {...providerConfig}>
-      <App />
+      <App customHeader={customHeader} />
     </Auth0Provider>
   </Provider>,
   document.getElementById("root")
