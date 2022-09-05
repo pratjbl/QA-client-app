@@ -13,12 +13,9 @@ export const ExternalApiComponent = () => {
     apiMessage: "",
     error: null,
   });
-
-  const {
-    getAccessTokenSilently,
-    loginWithPopup,
-    getAccessTokenWithPopup,
-  } = useAuth0();
+  const [subrefValue, setSubrefValue] = useState("");
+  const { getAccessTokenSilently, loginWithPopup, getAccessTokenWithPopup } =
+    useAuth0();
 
   const handleConsent = async () => {
     try {
@@ -79,6 +76,19 @@ export const ExternalApiComponent = () => {
     }
   };
 
+  const callMFAApi = async () => {
+    console.log(subrefValue);
+    try {
+      console.log("D");
+      const token = await getAccessTokenSilently({
+        subrefid: subrefValue,
+        ignoreCache: true,
+      });
+      console.log(token);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const handle = (e, fn) => {
     e.preventDefault();
     fn();
@@ -170,15 +180,20 @@ export const ExternalApiComponent = () => {
             </p>
           </Alert>
         )}
-
-        <Button
-          color="primary"
-          className="mt-5"
-          onClick={callApi}
-          disabled={!audience}
-        >
-          Ping API
-        </Button>
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <input
+            type="text"
+            onChange={(e) => setSubrefValue(e.target.value)}
+          ></input>
+          <Button
+            color="primary"
+            className="mt-5"
+            onClick={callMFAApi}
+            disabled={!audience}
+          >
+            Ping API
+          </Button>
+        </div>
       </div>
 
       <div className="result-block-container">
