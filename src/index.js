@@ -24,6 +24,8 @@ const providerConfig = {
   clientId: config.clientId,
   ...(config.audience ? { audience: config.audience } : null),
   redirectUri: window.location.origin,
+  useRefreshTokens: true,
+  audience: "https://api.mcafee.com",
   scope:
     "openid profile email enroll read:authenticators remove:authenticators offline_access",
   onRedirectCallback,

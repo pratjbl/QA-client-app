@@ -11,10 +11,9 @@ import ExternalApi from "./views/ExternalApi";
 import { useAuth0 } from "@auth0/auth0-react";
 import MainComponent from "./components/login-flow/MainComponent";
 import history from "./utils/history";
-
+import ParseLoginAccessToken from "./components/login-flow/parseAccessToken";
 // styles
 import "./App.css";
-
 // fontawesome
 import initFontAwesome from "./utils/initFontAwesome";
 import OTP from "./components/otp";
@@ -24,7 +23,6 @@ import ID from "./components/ID";
 import Access from "./components/Access";
 import Refresh from "./components/Refresh";
 initFontAwesome();
-
 const App = () => {
   const [detailsState, setDetailsState] = useState({
     email: "",
@@ -61,7 +59,6 @@ const App = () => {
             <Route path="/main-component">
               <MainComponent response={responseForHomeRoute} />
             </Route>
-
             <Route path="/otp" exact>
               <OTP
                 detailsState={detailsState}
@@ -96,6 +93,12 @@ const App = () => {
               <Refresh
                 detailsState={detailsState}
                 setDetailsState={setDetailsState}
+              />
+            </Route>
+            <Route path="/parseLoginAccessToken" exact>
+              <ParseLoginAccessToken
+                response={responseForHomeRoute}
+                setResponse={setResponse}
               />
             </Route>
           </Switch>
