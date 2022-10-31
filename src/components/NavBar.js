@@ -89,7 +89,7 @@ const NavBar = (props) => {
       },
     });
     getAccessToken();
-  }, [currentValue, value]);
+  }, [currentValue, value, getAccessToken]);
   console.log("---->In the Navbar", finalState, currentValue);
 
   const [isOpen, setIsOpen] = useState(false);
