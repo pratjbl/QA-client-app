@@ -89,7 +89,8 @@ const NavBar = (props) => {
       },
     });
     getAccessToken();
-  }, [currentValue, value, getAccessToken]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentValue, value]);
   console.log("---->In the Navbar", finalState, currentValue);
 
   const [isOpen, setIsOpen] = useState(false);
