@@ -12,8 +12,7 @@ export default function ParseLoginAccessToken(props) {
   window.onbeforeunload = (event) => {
     const e = event || window.event;
     e.preventDefault();
-    history.push("/verify");
-
+    history.push("/");
     if (e) {
       e.returnValue = "";
     }
