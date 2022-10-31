@@ -71,7 +71,9 @@ export default function ParseLoginAccessToken(props) {
   };
 
   const parse2 = getOTPIdToken();
-  if (!parseAccessToken) {
+  if (!isAuthenticated) {
+    return <div>Please Login to get access token & ID token</div>;
+  } else if (!parseAccessToken) {
     return (
       <div
         style={{
@@ -83,8 +85,6 @@ export default function ParseLoginAccessToken(props) {
         Something went wrong try to reload the application ...
       </div>
     );
-  } else if (!isAuthenticated) {
-    return <div>Please Login to get access token & ID token</div>;
   } else {
     return (
       <div>
