@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { Button } from "reactstrap";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useHistory } from "react-router-dom";
 
 export default function ParseLoginAccessToken(props) {
-  const history = useHistory();
   const { response, setResponse } = props;
   const [customParam, setCustomParam] = useState("");
   const { isAuthenticated, getAccessTokenSilently, getIdTokenClaims } =
