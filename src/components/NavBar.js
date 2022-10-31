@@ -127,18 +127,16 @@ const NavBar = (props) => {
                   OTP
                 </NavLink>
               </NavItem>
-              {isAuthenticated && (
-                <NavItem>
-                  <NavLink
-                    tag={RouterNavLink}
-                    to="/parseLoginAccessToken"
-                    exact
-                    activeClassName="router-link-exact-active"
-                  >
-                    Custom Claims
-                  </NavLink>
-                </NavItem>
-              )}
+              <NavItem>
+                <NavLink
+                  tag={RouterNavLink}
+                  to="/parseLoginAccessToken"
+                  exact
+                  activeClassName="router-link-exact-active"
+                >
+                  Custom Claims
+                </NavLink>
+              </NavItem>
               {isAuthenticated && (
                 <NavItem>
                   <NavLink

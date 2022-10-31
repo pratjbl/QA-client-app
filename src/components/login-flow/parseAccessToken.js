@@ -94,6 +94,8 @@ export default function ParseLoginAccessToken(props) {
         Something went wrong try to reload the application ...
       </div>
     );
+  } else if (!isAuthenticated) {
+    return <div>Please Login to get access token & ID token</div>;
   } else {
     return (
       <div>
