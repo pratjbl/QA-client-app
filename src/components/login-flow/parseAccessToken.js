@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { Button } from "reactstrap";
 import { useAuth0 } from "@auth0/auth0-react";
-
+import { ThreeDots } from "react-loader-spinner";
 export default function ParseLoginAccessToken(props) {
   const { response, setResponse } = props;
   const [customParam, setCustomParam] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [statusMessage, setStatusMessage] = useState("");
+  const [isError, setIsError] = useState(false);
   const { isAuthenticated, getAccessTokenSilently, getIdTokenClaims } =
     useAuth0();
   const getOTPAccessToken = ({ AccessToken }) => {
@@ -31,6 +34,7 @@ export default function ParseLoginAccessToken(props) {
   );
   console.log("is this changing", parseAccessToken);
   const getNewAccessToken = async (props) => {
+    setIsLoading(true);
     console.log("went in this one");
     if (isAuthenticated) {
       try {
@@ -44,8 +48,20 @@ export default function ParseLoginAccessToken(props) {
         console.log("old", response.AccessToken, "new", data);
         setResponse({ AccessToken: data, IdToken: data2?.__raw });
         setParseAccessToken(getOTPAccessToken({ AccessToken: data }));
+        setStatusMessage("Claims are updated");
+        setIsLoading(false);
       } catch (err) {
+        if (
+          err.error === "unauthorized" ||
+          err?.error_description?.rootCause?.code === "Invalid Parameter"
+        ) {
+          setStatusMessage("Incorrect value for subrefid");
+        } else {
+          setStatusMessage("Something went wrong ...");
+        }
+        setIsError(true);
         console.log(err);
+        setIsLoading(false);
       }
     }
   };
@@ -110,13 +126,19 @@ export default function ParseLoginAccessToken(props) {
             scope : {parseAccessToken?.scope}
             <br />
             {parseAccessToken?.subrefid ? (
-              <p>subrefid : {parseAccessToken?.subrefid}</p>
+              <p style={{ margin: "0" }}>
+                subrefid : {parseAccessToken?.subrefid}
+              </p>
             ) : null}
             {parseAccessToken?.acctrefid ? (
-              <p>acctrefid : {parseAccessToken?.acctrefid}</p>
+              <p style={{ margin: "0" }}>
+                acctrefid : {parseAccessToken?.acctrefid}
+              </p>
             ) : null}
             {parseAccessToken?.prtnrrefid ? (
-              <p>prtnrrefid : {parseAccessToken?.prtnrrefid}</p>
+              <p style={{ margin: "0" }}>
+                prtnrrefid : {parseAccessToken?.prtnrrefid}
+              </p>
             ) : null}
           </div>
           <div
@@ -164,16 +186,46 @@ export default function ParseLoginAccessToken(props) {
             onChange={(e) => setCustomParam(e.target.value)}
           ></input>
           <br />
-          <Button
-            st
-            color="primary"
-            className="mt-2"
-            onClick={(e) => {
-              getNewAccessToken({ subrefid: customParam });
+          <div
+            style={{
+              display: "flex",
+              alignItems: "flex",
             }}
+            className="mb-2"
           >
-            Refresh token call
-          </Button>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Button
+                st
+                color="primary"
+                className="mt-2"
+                onClick={(e) => {
+                  getNewAccessToken({ subrefid: customParam });
+                }}
+              >
+                Refresh token call
+              </Button>
+              <div
+                className="ml-3"
+                style={{
+                  height: "10px",
+                }}
+              >
+                {isLoading ? (
+                  <ThreeDots height="25" width="25" />
+                ) : isError ? (
+                  <p style={{ color: "red" }}>{statusMessage}</p>
+                ) : (
+                  <p style={{ color: "green" }}>{statusMessage}</p>
+                )}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );
