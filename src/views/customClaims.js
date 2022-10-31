@@ -25,8 +25,7 @@ export const CustomClaimsComponent = (props) => {
     error: null,
   });
   const [subrefValue, setSubrefValue] = useState("");
-  const { getAccessTokenSilently, loginWithPopup, getAccessTokenWithPopup } =
-    useAuth0();
+  const { getAccessTokenSilently } = useAuth0();
 
   // const handleConsent = async () => {
   //   try {

@@ -63,7 +63,7 @@ const Home = () => {
             alt="React logo"
             width="100px"
           />{" "}
-          |
+          | QA
         </div>
 
         <div>
