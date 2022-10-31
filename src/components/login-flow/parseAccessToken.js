@@ -97,20 +97,26 @@ export default function ParseLoginAccessToken(props) {
           <div style={{ padding: "1rem", border: "1px solid blue" }}>
             <b>Claims of Access token</b>
             <br />
-            Issuer : {parseAccessToken?.iss}
+            iss : {parseAccessToken?.iss}
             <br />
-            Subject : {parseAccessToken?.sub}
+            sub : {parseAccessToken?.sub}
             <br />
-            Issued at : {parseAccessToken?.iat}
+            iat : {parseAccessToken?.iat}
             <br />
-            Expires in : {parseAccessToken?.exp}
+            exp : {parseAccessToken?.exp}
             <br />
-            Client(Authorized party) : {parseAccessToken?.azp}
+            azp : {parseAccessToken?.azp}
             <br />
-            Scopes : {parseAccessToken?.scope}
+            scope : {parseAccessToken?.scope}
             <br />
             {parseAccessToken?.subrefid ? (
-              <p>SubrefId : {parseAccessToken?.subrefid}</p>
+              <p>subrefid : {parseAccessToken?.subrefid}</p>
+            ) : null}
+            {parseAccessToken?.acctrefid ? (
+              <p>acctrefid : {parseAccessToken?.acctrefid}</p>
+            ) : null}
+            {parseAccessToken?.prtnrrefid ? (
+              <p>prtnrrefid : {parseAccessToken?.prtnrrefid}</p>
             ) : null}
           </div>
           <div
