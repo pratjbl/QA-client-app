@@ -9,15 +9,6 @@ export default function ParseLoginAccessToken(props) {
   const [customParam, setCustomParam] = useState("");
   const { isAuthenticated, getAccessTokenSilently, getIdTokenClaims } =
     useAuth0();
-  window.onbeforeunload = (event) => {
-    const e = event || window.event;
-    e.preventDefault();
-    history.push("/");
-    if (e) {
-      e.returnValue = "";
-    }
-    return "";
-  };
   const getOTPAccessToken = ({ AccessToken }) => {
     try {
       var base64Url = AccessToken.split(".")[1];
