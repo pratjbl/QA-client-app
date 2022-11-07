@@ -63,6 +63,7 @@ const NavBar = (props) => {
       culture: currentValue?.culture || Culture() || "",
       affid: currentValue?.affid || AffId() || 0,
       enableBack: currentValue?.enableBack,
+      devicerefid: "example-devicerefid",
       enableSkip: currentValue?.enableSkip,
       hideHeader: currentValue?.hideHeader,
       hideFooter: currentValue?.hideFooter,
