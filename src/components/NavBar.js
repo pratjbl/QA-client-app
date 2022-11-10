@@ -25,6 +25,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 const NavBar = (props) => {
   const currentValue = useSelector((state) => state.counter.value);
+  console.log('currentValue', currentValue)
   const value = useLocation().search;
   const {
     user,
@@ -63,7 +64,7 @@ const NavBar = (props) => {
       culture: currentValue?.culture || Culture() || "",
       affid: currentValue?.affid || AffId() || 0,
       enableBack: currentValue?.enableBack,
-      devicerefid: "example-devicerefid",
+      devicerefid: currentValue?.deviceRefId,
       enableSkip: currentValue?.enableSkip,
       hideHeader: currentValue?.hideHeader,
       hideFooter: currentValue?.hideFooter,

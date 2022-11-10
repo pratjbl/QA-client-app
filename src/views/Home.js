@@ -21,6 +21,7 @@ const Home = () => {
     enableSkip: false,
     hideHeader: false,
     hideFooter: false,
+    deviceRefId:"",
   });
 
   const currentValue = useSelector((state) => state.counter.value);
@@ -582,6 +583,40 @@ const Home = () => {
                 );
               }}
             />
+          </div>
+          <div style={{display:'flex',flexDirection:'column',marginBottom: "1rem",}}>
+          <div
+            style={{
+              fontWeight: 700,
+            }}
+          >
+            device_ref_id{" "}
+            <input
+              type="text"
+              // placeholder="for eg en-us"
+              value={currentQuery.deviceRefId}
+              style={{
+                marginLeft: "1rem",
+              }}
+              onChange={(e) => {
+                setCurrentQuery({
+                  ...currentQuery,
+                  deviceRefId: e.target.value,
+                });
+              }}
+              onBlur={(e) => {
+                dispatch(
+                  addNewKeyValuePair({
+                    key: "deviceRefId",
+                    value: e.target.value,
+                  })
+                );
+              }}
+            />
+          </div>
+          <p style={{fontWeight:'normal',paddingTop:'14px',paddingLeft:'4px'}}>
+              {" (Example - 44a02402-1d8b-4e99-8c40-6bead9438cc8)"}
+            </p>
           </div>
         </div>
         <div
