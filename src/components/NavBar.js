@@ -161,7 +161,7 @@ const NavBar = (props) => {
                     color="primary"
                     className="btn-margin"
                     onClick={() => {
-                      localStorage.setItem("culture", finalState);
+                      localStorage.setItem("culture", finalState?.culture);
                       loginWithRedirect({
                         ...finalState,
                         aai: JSON.stringify(finalState.aai),
@@ -224,7 +224,7 @@ const NavBar = (props) => {
                     color="primary"
                     block
                     onClick={() => {
-                      localStorage.setItem("culture", finalState);
+                      localStorage.setItem("culture", finalState?.culture);
                       loginWithRedirect({
                         ...finalState,
                         aai: JSON.stringify(finalState.aai),
