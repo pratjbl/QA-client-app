@@ -30,7 +30,7 @@ export default function ParseLoginAccessToken(props) {
     }
   };
   const [parseAccessToken, setParseAccessToken] = useState(
-    getOTPAccessToken({ AccessToken: response?.AccessToken?.access_token })
+    getOTPAccessToken({ AccessToken: response?.AccessToken })
   );
   console.log("is this changing", parseAccessToken);
   const getNewAccessToken = async (props) => {
@@ -42,7 +42,7 @@ export default function ParseLoginAccessToken(props) {
           ignoreCache: true,
           subrefid: props?.subrefid,
           id_token: response?.IdToken,
-          access_token: response?.AccessToken?.access_token,
+          access_token: response?.AccessToken,
         });
         const data2 = await getIdTokenClaims();
         console.log("old", response.AccessToken, "new", data);
@@ -168,7 +168,7 @@ export default function ParseLoginAccessToken(props) {
             <input
               type="text"
               style={{ width: "100%" }}
-              value={response?.AccessToken?.access_token}
+              value={response?.AccessToken}
             />
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>

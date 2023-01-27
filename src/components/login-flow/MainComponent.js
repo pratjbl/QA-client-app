@@ -165,7 +165,7 @@ function MainComponent(props) {
           type="text"
           style={{ width: "100%" }}
           onChange={() => {}}
-          value={props?.response?.AccessToken?.access_token}
+          value={props?.response?.AccessToken}
         />
       </div>
       <div style={{ display: "flex", flexDirection: "column" }}>
