@@ -100,7 +100,7 @@ function MainComponent(props) {
 
       const options = {
         redirect_uri: window.location.origin,
-        culture: localStorage.getItem("culture") || "en-us",
+        // culture: localStorage.getItem("culture") || "en-us",
         //audience: "https://mudit-dev.us.auth0.com/mfa/",
         //scope: "enroll read:authenticators remove:authenticators",
         acr_values:
