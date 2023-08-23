@@ -166,7 +166,6 @@ const NavBar = (props) => {
                         ...finalState,
                         aai: JSON.stringify(finalState.aai),
                         source: "suhas-test",
-                        prompt: "login",
                         // connectionName: "AV-Migration-Pwd-Authentication",
                         // affid: AffId(),
                         // fragment: `culture=en-us&aff_id=105`,
