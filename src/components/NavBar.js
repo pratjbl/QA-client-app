@@ -71,20 +71,28 @@ const NavBar = (props) => {
       aai: {
         ea: currentValue?.ea || "",
         cc: {
-          Login:
-            currentValue?.mode !== "register"
-              ? {
-                  hideSignUp: currentValue?.hideSignUp,
-                  disableEmail: currentValue?.disableEmail,
-                }
-              : null,
-          SignUp:
-            currentValue?.mode === "register"
-              ? {
-                  hideLoginCTA: currentValue?.hideLoginCTA,
-                  disableEmail: currentValue?.disableEmail,
-                }
-              : null,
+          Login: {
+            hideSignUp:
+              currentValue?.mode !== "register"
+                ? currentValue?.hideSignUp
+                : null,
+            disableEmail:
+              currentValue?.mode !== "register"
+                ? currentValue?.disableEmail
+                : null,
+            hideGoogleButton: currentValue?.hideGoogleLogin,
+          },
+          SignUp: {
+            hideGoogleButton: currentValue?.hideGoogleSignUp,
+            hideLoginCTA:
+              currentValue?.mode === "register"
+                ? currentValue?.hideLoginCTA
+                : null,
+            disableEmail:
+              currentValue?.mode === "register"
+                ? currentValue?.disableEmail
+                : null,
+          },
           mode: currentValue?.mode,
         },
       },

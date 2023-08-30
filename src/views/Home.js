@@ -21,7 +21,9 @@ const Home = () => {
     enableSkip: false,
     hideHeader: false,
     hideFooter: false,
-    deviceRefId:"",
+    hideGoogleLogin: false,
+    hideGoogleSignUp: false,
+    deviceRefId: "",
   });
 
   const currentValue = useSelector((state) => state.counter.value);
@@ -215,7 +217,109 @@ const Home = () => {
               )}
             </div>
           )}
-
+          <div
+            style={{
+              display: "flex",
+              marginBottom: "1rem",
+              fontWeight: 700,
+            }}
+          >
+            Hide Google Login Button{" "}
+            {currentQuery?.hideGoogleLogin ? (
+              <button
+                style={{
+                  marginLeft: "1rem",
+                  borderRadius: "2rem",
+                  background: "#43CB2B",
+                  color: "white",
+                  border: "1px solid white",
+                }}
+                onClick={(e) => {
+                  setCurrentQuery({
+                    ...currentQuery,
+                    hideGoogleLogin: false,
+                  });
+                  dispatch(
+                    addNewKeyValuePair({ key: "hideGoogleLogin", value: false })
+                  );
+                }}
+              >
+                Yes
+              </button>
+            ) : (
+              <button
+                style={{
+                  marginLeft: "1rem",
+                  borderRadius: "2rem",
+                  border: "1px solid white",
+                }}
+                onClick={(e) => {
+                  setCurrentQuery({
+                    ...currentQuery,
+                    hideGoogleLogin: true,
+                  });
+                  dispatch(
+                    addNewKeyValuePair({ key: "hideGoogleLogin", value: true })
+                  );
+                }}
+              >
+                No
+              </button>
+            )}
+          </div>
+          <div
+            style={{
+              display: "flex",
+              marginBottom: "1rem",
+              fontWeight: 700,
+            }}
+          >
+            Hide Google Signup Button{" "}
+            {currentQuery?.hideGoogleSignUp ? (
+              <button
+                style={{
+                  marginLeft: "1rem",
+                  borderRadius: "2rem",
+                  background: "#43CB2B",
+                  color: "white",
+                  border: "1px solid white",
+                }}
+                onClick={(e) => {
+                  setCurrentQuery({
+                    ...currentQuery,
+                    hideGoogleSignUp: false,
+                  });
+                  dispatch(
+                    addNewKeyValuePair({
+                      key: "hideGoogleSignUp",
+                      value: false,
+                    })
+                  );
+                }}
+              >
+                Yes
+              </button>
+            ) : (
+              <button
+                style={{
+                  marginLeft: "1rem",
+                  borderRadius: "2rem",
+                  border: "1px solid white",
+                }}
+                onClick={(e) => {
+                  setCurrentQuery({
+                    ...currentQuery,
+                    hideGoogleSignUp: true,
+                  });
+                  dispatch(
+                    addNewKeyValuePair({ key: "hideGoogleSignUp", value: true })
+                  );
+                }}
+              >
+                No
+              </button>
+            )}
+          </div>
           <div
             style={{
               display: "flex",
@@ -584,37 +688,49 @@ const Home = () => {
               }}
             />
           </div>
-          <div style={{display:'flex',flexDirection:'column',marginBottom: "1rem",}}>
           <div
             style={{
-              fontWeight: 700,
+              display: "flex",
+              flexDirection: "column",
+              marginBottom: "1rem",
             }}
           >
-            device_ref_id{" "}
-            <input
-              type="text"
-              // placeholder="for eg en-us"
-              value={currentQuery.deviceRefId}
+            <div
               style={{
-                marginLeft: "1rem",
+                fontWeight: 700,
               }}
-              onChange={(e) => {
-                setCurrentQuery({
-                  ...currentQuery,
-                  deviceRefId: e.target.value,
-                });
+            >
+              device_ref_id{" "}
+              <input
+                type="text"
+                // placeholder="for eg en-us"
+                value={currentQuery.deviceRefId}
+                style={{
+                  marginLeft: "1rem",
+                }}
+                onChange={(e) => {
+                  setCurrentQuery({
+                    ...currentQuery,
+                    deviceRefId: e.target.value,
+                  });
+                }}
+                onBlur={(e) => {
+                  dispatch(
+                    addNewKeyValuePair({
+                      key: "deviceRefId",
+                      value: e.target.value,
+                    })
+                  );
+                }}
+              />
+            </div>
+            <p
+              style={{
+                fontWeight: "normal",
+                paddingTop: "14px",
+                paddingLeft: "4px",
               }}
-              onBlur={(e) => {
-                dispatch(
-                  addNewKeyValuePair({
-                    key: "deviceRefId",
-                    value: e.target.value,
-                  })
-                );
-              }}
-            />
-          </div>
-          <p style={{fontWeight:'normal',paddingTop:'14px',paddingLeft:'4px'}}>
+            >
               {" (Example - 44a02402-1d8b-4e99-8c40-6bead9438cc8)"}
             </p>
           </div>
