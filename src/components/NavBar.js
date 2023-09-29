@@ -72,6 +72,7 @@ const NavBar = (props) => {
         ea: currentValue?.ea || "",
         cc: {
           Login: {
+            hideLoginCTA: currentValue?.hideLoginCTAfromOTP,
             hideSignUp:
               currentValue?.mode !== "register"
                 ? currentValue?.hideSignUp

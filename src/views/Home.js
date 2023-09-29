@@ -24,6 +24,7 @@ const Home = () => {
     hideGoogleLogin: false,
     hideGoogleSignUp: false,
     deviceRefId: "",
+    hideLoginCTAfromOTP: false,
   });
 
   const currentValue = useSelector((state) => state.counter.value);
@@ -217,6 +218,62 @@ const Home = () => {
               )}
             </div>
           )}
+          <div
+            style={{
+              display: "flex",
+              marginBottom: "1rem",
+              fontWeight: 700,
+            }}
+          >
+            Hide Login Redirection from OTP{" "}
+            {currentQuery?.hideLoginCTAfromOTP ? (
+              <button
+                style={{
+                  marginLeft: "1rem",
+                  borderRadius: "2rem",
+                  background: "#43CB2B",
+                  color: "white",
+                  border: "1px solid white",
+                }}
+                onClick={(e) => {
+                  setCurrentQuery({
+                    ...currentQuery,
+                    hideLoginCTAfromOTP: false,
+                  });
+                  dispatch(
+                    addNewKeyValuePair({
+                      key: "hideLoginCTAfromOTP",
+                      value: false,
+                    })
+                  );
+                }}
+              >
+                Yes
+              </button>
+            ) : (
+              <button
+                style={{
+                  marginLeft: "1rem",
+                  borderRadius: "2rem",
+                  border: "1px solid white",
+                }}
+                onClick={(e) => {
+                  setCurrentQuery({
+                    ...currentQuery,
+                    hideLoginCTAfromOTP: true,
+                  });
+                  dispatch(
+                    addNewKeyValuePair({
+                      key: "hideLoginCTAfromOTP",
+                      value: true,
+                    })
+                  );
+                }}
+              >
+                No
+              </button>
+            )}
+          </div>
           <div
             style={{
               display: "flex",
