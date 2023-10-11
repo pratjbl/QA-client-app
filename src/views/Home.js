@@ -25,6 +25,7 @@ const Home = () => {
     hideGoogleSignUp: false,
     deviceRefId: "",
     hideLoginCTAfromOTP: false,
+    hideResetPwdLink: false,
   });
 
   const currentValue = useSelector((state) => state.counter.value);
@@ -265,6 +266,62 @@ const Home = () => {
                   dispatch(
                     addNewKeyValuePair({
                       key: "hideLoginCTAfromOTP",
+                      value: true,
+                    })
+                  );
+                }}
+              >
+                No
+              </button>
+            )}
+          </div>
+          <div
+            style={{
+              display: "flex",
+              marginBottom: "1rem",
+              fontWeight: 700,
+            }}
+          >
+            Hide Reset Password link{" "}
+            {currentQuery?.hideResetPwdLink ? (
+              <button
+                style={{
+                  marginLeft: "1rem",
+                  borderRadius: "2rem",
+                  background: "#43CB2B",
+                  color: "white",
+                  border: "1px solid white",
+                }}
+                onClick={(e) => {
+                  setCurrentQuery({
+                    ...currentQuery,
+                    hideResetPwdLink: false,
+                  });
+                  dispatch(
+                    addNewKeyValuePair({
+                      key: "hideResetPwdLink",
+                      value: false,
+                    })
+                  );
+                }}
+              >
+                Yes
+              </button>
+            ) : (
+              <button
+                style={{
+                  marginLeft: "1rem",
+                  borderRadius: "2rem",
+                  border: "1px solid white",
+                }}
+                onClick={(e) => {
+                  setCurrentQuery({
+                    ...currentQuery,
+                    hideResetPwdLink: true,
+                  });
+                  dispatch(
+                    addNewKeyValuePair({
+                      key: "hideResetPwdLink",
                       value: true,
                     })
                   );
