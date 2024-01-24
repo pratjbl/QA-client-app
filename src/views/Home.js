@@ -26,6 +26,8 @@ const Home = () => {
     deviceRefId: "",
     hideLoginCTAfromOTP: false,
     hideResetPwdLink: false,
+    soes: false,
+    ssp: false,
   });
 
   const currentValue = useSelector((state) => state.counter.value);
@@ -219,6 +221,108 @@ const Home = () => {
               )}
             </div>
           )}
+            <div
+            style={{
+              display: "flex",
+              marginBottom: "1rem",
+              fontWeight: 700,
+            }}
+          >
+            Skip email otp screen{" "}
+            {currentQuery?.soes ? (
+              <button
+                style={{
+                  marginLeft: "1rem",
+                  borderRadius: "2rem",
+                  background: "#43CB2B",
+                  color: "white",
+                  border: "1px solid white",
+                }}
+                onClick={(e) => {
+                  setCurrentQuery({
+                    ...currentQuery,
+                    soes: false,
+                  });
+                  dispatch(
+                    addNewKeyValuePair({
+                      key: "soes",
+                      value: false,
+                    })
+                  );
+                }}
+              >
+                Yes
+              </button>
+            ) : (
+              <button
+                style={{
+                  marginLeft: "1rem",
+                  borderRadius: "2rem",
+                  border: "1px solid white",
+                }}
+                onClick={(e) => {
+                  setCurrentQuery({
+                    ...currentQuery,
+                    soes: true,
+                  });
+                  dispatch(addNewKeyValuePair({ key: "soes", value: true }));
+                }}
+              >
+                No
+              </button>
+            )}
+          </div>
+          <div
+            style={{
+              display: "flex",
+              marginBottom: "1rem",
+              fontWeight: 700,
+            }}
+          >
+            Skip Set Password{" "}
+            {currentQuery?.ssp ? (
+              <button
+                style={{
+                  marginLeft: "1rem",
+                  borderRadius: "2rem",
+                  background: "#43CB2B",
+                  color: "white",
+                  border: "1px solid white",
+                }}
+                onClick={(e) => {
+                  setCurrentQuery({
+                    ...currentQuery,
+                    ssp: false,
+                  });
+                  dispatch(
+                    addNewKeyValuePair({
+                      key: "ssp",
+                      value: false,
+                    })
+                  );
+                }}
+              >
+                Yes
+              </button>
+            ) : (
+              <button
+                style={{
+                  marginLeft: "1rem",
+                  borderRadius: "2rem",
+                  border: "1px solid white",
+                }}
+                onClick={(e) => {
+                  setCurrentQuery({
+                    ...currentQuery,
+                    ssp: true,
+                  });
+                  dispatch(addNewKeyValuePair({ key: "ssp", value: true }));
+                }}
+              >
+                No
+              </button>
+            )}
+          </div>
           <div
             style={{
               display: "flex",
