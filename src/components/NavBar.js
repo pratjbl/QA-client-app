@@ -83,6 +83,8 @@ const NavBar = (props) => {
                 ? currentValue?.disableEmail
                 : null,
             hideGoogleButton: currentValue?.hideGoogleLogin,
+            ssp: currentValue?.ssp,
+            soes: currentValue?.soes,
           },
           SignUp: {
             hideGoogleButton: currentValue?.hideGoogleSignUp,
