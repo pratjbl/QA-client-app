@@ -13,6 +13,7 @@ const Home = () => {
     culture: "",
     prefillEmail: "",
     affid: "",
+    affcc:"",
     landing_screen: "login",
     hideLoginCTA: false,
     hideSignUp: false,
@@ -23,6 +24,10 @@ const Home = () => {
     hideFooter: false,
     hideGoogleLogin: false,
     hideGoogleSignUp: false,
+    enableMSALogin:false,
+    enableMSASignUp:false,
+    enableGoogleLogin:false,
+    enableGoogleSignup:false,
     deviceRefId: "",
     hideLoginCTAfromOTP: false,
     hideResetPwdLink: false,
@@ -435,7 +440,7 @@ const Home = () => {
               </button>
             )}
           </div>
-          <div
+          {/*<div
             style={{
               display: "flex",
               marginBottom: "1rem",
@@ -531,6 +536,212 @@ const Home = () => {
                   });
                   dispatch(
                     addNewKeyValuePair({ key: "hideGoogleSignUp", value: true })
+                  );
+                }}
+              >
+                No
+              </button>
+            )}
+          </div>*/}
+          <div
+            style={{
+              display: "flex",
+              marginBottom: "1rem",
+              fontWeight: 700,
+            }}
+          >
+            Enable MSA Login Button{" "}
+            {currentQuery?.enableMSALogin ? (
+              <button
+                style={{
+                  marginLeft: "1rem",
+                  borderRadius: "2rem",
+                  background: "#43CB2B",
+                  color: "white",
+                  border: "1px solid white",
+                }}
+                onClick={(e) => {
+                  setCurrentQuery({
+                    ...currentQuery,
+                    enableMSALogin: false,
+                  });
+                  dispatch(
+                    addNewKeyValuePair({ key: "enableMSALogin", value: false })
+                  );
+                }}
+              >
+                Yes
+              </button>
+            ) : (
+              <button
+                style={{
+                  marginLeft: "1rem",
+                  borderRadius: "2rem",
+                  border: "1px solid white",
+                }}
+                onClick={(e) => {
+                  setCurrentQuery({
+                    ...currentQuery,
+                    enableMSALogin: true,
+                  });
+                  dispatch(
+                    addNewKeyValuePair({ key: "enableMSALogin", value: true })
+                  );
+                }}
+              >
+                No
+              </button>
+            )}
+          </div>
+          <div
+            style={{
+              display: "flex",
+              marginBottom: "1rem",
+              fontWeight: 700,
+            }}
+          >
+            Enable MSA Signup Button{" "}
+            {currentQuery?.enableMSASignUp ? (
+              <button
+                style={{
+                  marginLeft: "1rem",
+                  borderRadius: "2rem",
+                  background: "#43CB2B",
+                  color: "white",
+                  border: "1px solid white",
+                }}
+                onClick={(e) => {
+                  setCurrentQuery({
+                    ...currentQuery,
+                    enableMSASignUp: false,
+                  });
+                  dispatch(
+                    addNewKeyValuePair({
+                      key: "enableMSASignUp",
+                      value: false,
+                    })
+                  );
+                }}
+              >
+                Yes
+              </button>
+            ) : (
+              <button
+                style={{
+                  marginLeft: "1rem",
+                  borderRadius: "2rem",
+                  border: "1px solid white",
+                }}
+                onClick={(e) => {
+                  setCurrentQuery({
+                    ...currentQuery,
+                    enableMSASignUp: true,
+                  });
+                  dispatch(
+                    addNewKeyValuePair({ key: "enableMSASignUp", value: true })
+                  );
+                }}
+              >
+                No
+              </button>
+            )}
+          </div>
+              <div
+            style={{
+              display: "flex",
+              marginBottom: "1rem",
+              fontWeight: 700,
+            }}
+          >
+            Enable Google Login Button{" "}
+            {currentQuery?.enableGoogleLogin ? (
+              <button
+                style={{
+                  marginLeft: "1rem",
+                  borderRadius: "2rem",
+                  background: "#43CB2B",
+                  color: "white",
+                  border: "1px solid white",
+                }}
+                onClick={(e) => {
+                  setCurrentQuery({
+                    ...currentQuery,
+                    enableGoogleLogin: false,
+                  });
+                  dispatch(
+                    addNewKeyValuePair({ key: "enableGoogleLogin", value: false })
+                  );
+                }}
+              >
+                Yes
+              </button>
+            ) : (
+              <button
+                style={{
+                  marginLeft: "1rem",
+                  borderRadius: "2rem",
+                  border: "1px solid white",
+                }}
+                onClick={(e) => {
+                  setCurrentQuery({
+                    ...currentQuery,
+                    enableGoogleLogin: true,
+                  });
+                  dispatch(
+                    addNewKeyValuePair({ key: "enableGoogleLogin", value: true })
+                  );
+                }}
+              >
+                No
+              </button>
+            )}
+          </div>
+          <div
+            style={{
+              display: "flex",
+              marginBottom: "1rem",
+              fontWeight: 700,
+            }}
+          >
+            Enable Google Signup Button{" "}
+            {currentQuery?.enableGoogleSignup ? (
+              <button
+                style={{
+                  marginLeft: "1rem",
+                  borderRadius: "2rem",
+                  background: "#43CB2B",
+                  color: "white",
+                  border: "1px solid white",
+                }}
+                onClick={(e) => {
+                  setCurrentQuery({
+                    ...currentQuery,
+                    enableGoogleSignup: false,
+                  });
+                  dispatch(
+                    addNewKeyValuePair({
+                      key: "enableGoogleSignup",
+                      value: false,
+                    })
+                  );
+                }}
+              >
+                Yes
+              </button>
+            ) : (
+              <button
+                style={{
+                  marginLeft: "1rem",
+                  borderRadius: "2rem",
+                  border: "1px solid white",
+                }}
+                onClick={(e) => {
+                  setCurrentQuery({
+                    ...currentQuery,
+                    enableGoogleSignup: true,
+                  });
+                  dispatch(
+                    addNewKeyValuePair({ key: "enableGoogleSignup", value: true })
                   );
                 }}
               >
@@ -650,6 +861,56 @@ const Home = () => {
               )}
             </div>
           ) : null}
+          <div
+            style={{
+              display: "flex",
+              marginBottom: "1rem",
+              fontWeight: 700,
+            }}
+          >
+            Disable Email globally{" "}
+            {currentQuery?.hideSignUp ? (
+              <button
+                style={{
+                  marginLeft: "1rem",
+                  borderRadius: "2rem",
+                  background: "#43CB2B",
+                  color: "white",
+                  border: "1px solid white",
+                }}
+                onClick={(e) => {
+                  setCurrentQuery({
+                    ...currentQuery,
+                    hideSignUp: false,
+                  });
+                  dispatch(
+                    addNewKeyValuePair({ key: "disableEmail", value: false })
+                  );
+                }}
+              >
+                Yes
+              </button>
+            ) : (
+              <button
+                style={{
+                  marginLeft: "1rem",
+                  borderRadius: "2rem",
+                  border: "1px solid white",
+                }}
+                onClick={(e) => {
+                  setCurrentQuery({
+                    ...currentQuery,
+                    hideSignUp: true,
+                  });
+                  dispatch(
+                    addNewKeyValuePair({ key: "disableEmail", value: true })
+                  );
+                }}
+              >
+                No
+              </button>
+            )}
+          </div>
           <div
             style={{
               marginBottom: "1rem",
