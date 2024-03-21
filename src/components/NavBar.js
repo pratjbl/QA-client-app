@@ -68,8 +68,10 @@ const NavBar = (props) => {
       hideHeader: currentValue?.hideHeader,
       hideFooter: currentValue?.hideFooter,
       ui_locales: currentValue?.ui_locales,
+      deviceId: "example_deviceId",
       aai: {
         ea: currentValue?.ea || "",
+        affcc: currentValue?.affid || AffId() || 0,
         cc: {
           Login: {
             hideLoginCTA: currentValue?.hideLoginCTAfromOTP,
@@ -85,6 +87,8 @@ const NavBar = (props) => {
             hideGoogleButton: currentValue?.hideGoogleLogin,
             ssp: currentValue?.ssp,
             soes: currentValue?.soes,
+            enableMSA: currentValue?.enableMSALogin,
+            enableGoogle: currentValue?.enableGoogleLogin
           },
           SignUp: {
             hideGoogleButton: currentValue?.hideGoogleSignUp,
@@ -96,6 +100,8 @@ const NavBar = (props) => {
               currentValue?.mode === "register"
                 ? currentValue?.disableEmail
                 : null,
+            enableMSA: currentValue?.enableMSASignUp,
+            enableGoogle: currentValue?.enableGoogleSignup
           },
           mode: currentValue?.mode,
         },
