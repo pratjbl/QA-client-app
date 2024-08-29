@@ -71,6 +71,7 @@ const NavBar = (props) => {
       deviceId: "example_deviceId",
       aai: {
         ea: currentValue?.ea || "",
+        action: currentValue?.action,
         affcc: currentValue?.affid || AffId() || 0,
         cc: {
           Login: {
