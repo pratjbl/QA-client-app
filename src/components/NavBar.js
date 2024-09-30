@@ -50,7 +50,7 @@ const NavBar = (props) => {
       let query = UseQuery();
       const parsedHash = new URLSearchParams(window.location.hash.substr(1));
       let culture = query.get("affid") ?? parsedHash.get("affid");
-      return culture;
+      return culture ? (culture === " " ? undefined : culture) : 0;
     };
     const Culture = () => {
       let query = UseQuery();
@@ -61,7 +61,7 @@ const NavBar = (props) => {
     };
     setFinalState({
       culture: currentValue?.culture || Culture() || "",
-      affid: currentValue?.affid || AffId() || 0,
+      affid: currentValue?.affid || AffId(),
       enableBack: currentValue?.enableBack,
       devicerefid: "example-devicerefid",
       enableSkip: currentValue?.enableSkip,
@@ -72,7 +72,7 @@ const NavBar = (props) => {
       aai: {
         ea: currentValue?.ea || "",
         action: currentValue?.action,
-        affcc: currentValue?.affid || AffId() || 0,
+        affcc: currentValue?.affid || AffId(),
         cc: {
           Login: {
             hideLoginCTA: currentValue?.hideLoginCTAfromOTP,
@@ -89,7 +89,7 @@ const NavBar = (props) => {
             ssp: currentValue?.ssp,
             soes: currentValue?.soes,
             enableMSA: currentValue?.enableMSALogin,
-            enableGoogle: currentValue?.enableGoogleLogin
+            enableGoogle: currentValue?.enableGoogleLogin,
           },
           SignUp: {
             hideGoogleButton: currentValue?.hideGoogleSignUp,
@@ -102,7 +102,7 @@ const NavBar = (props) => {
                 ? currentValue?.disableEmail
                 : null,
             enableMSA: currentValue?.enableMSASignUp,
-            enableGoogle: currentValue?.enableGoogleSignup
+            enableGoogle: currentValue?.enableGoogleSignup,
           },
           mode: currentValue?.mode,
         },
@@ -114,10 +114,11 @@ const NavBar = (props) => {
   console.log("---->In the Navbar", finalState, currentValue);
 
   const [isOpen, setIsOpen] = useState(false);
+
   const toggle = () => setIsOpen(!isOpen);
 
   const logoutWithRedirect = () =>
-    (window.location = `https://idqa.mcafee.com/logout?redirectTo=${window.location.origin}&clientId=${configJson.clientId}`);
+    (window.location = `https://idqa3.mcafee.com/logout?redirectTo=${window.location.origin}&clientId=${configJson.clientId}`);
 
   return (
     <div className="nav-container">
@@ -184,8 +185,6 @@ const NavBar = (props) => {
                       loginWithRedirect({
                         ...finalState,
                         aai: JSON.stringify(finalState.aai),
-                        source: "suhas-test",
-                        // connectionName: "AV-Migration-Pwd-Authentication",
                         // affid: AffId(),
                         // fragment: `culture=en-us&aff_id=105`,
                         // &aai=${JSON.stringify(
