@@ -1262,6 +1262,35 @@ const Home = () => {
                 }}
               />
             </div>
+            <div
+              style={{
+                fontWeight: 700,
+              }}
+            >
+              f2rt{" "}
+              <input
+                type="text"
+                // placeholder="for eg en-us"
+                value={currentQuery.f2rt}
+                style={{
+                  marginLeft: "1rem",
+                }}
+                onChange={(e) => {
+                  setCurrentQuery({
+                    ...currentQuery,
+                    f2rt: e.target.value,
+                  });
+                }}
+                onBlur={(e) => {
+                  dispatch(
+                    addNewKeyValuePair({
+                      key: "f2rt",
+                      value: e.target.value,
+                    })
+                  );
+                }}
+              />
+            </div>
             <p
               style={{
                 fontWeight: "normal",
