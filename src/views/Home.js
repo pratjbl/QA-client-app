@@ -1262,7 +1262,25 @@ const Home = () => {
                 }}
               />
             </div>
-            <div
+            
+            <p
+              style={{
+                fontWeight: "normal",
+                paddingTop: "14px",
+                paddingLeft: "4px",
+              }}
+            >
+              {" (Example - 44a02402-1d8b-4e99-8c40-6bead9438cc8)"}
+            </p>
+          </div>
+              <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              marginBottom: "1rem",
+            }}
+          >
+              <div
               style={{
                 fontWeight: 700,
               }}
@@ -1291,15 +1309,6 @@ const Home = () => {
                 }}
               />
             </div>
-            <p
-              style={{
-                fontWeight: "normal",
-                paddingTop: "14px",
-                paddingLeft: "4px",
-              }}
-            >
-              {" (Example - 44a02402-1d8b-4e99-8c40-6bead9438cc8)"}
-            </p>
           </div>
         </div>
         <div
