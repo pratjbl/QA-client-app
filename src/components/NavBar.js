@@ -73,6 +73,8 @@ const NavBar = (props) => {
         ea: currentValue?.ea || "",
         action: currentValue?.action,
         affcc: currentValue?.affid || AffId(),
+        f2rt:currentValue?.f2rt,
+        f2rs:currentValue?.f2rs,
         cc: {
           Login: {
             hideLoginCTA: currentValue?.hideLoginCTAfromOTP,
