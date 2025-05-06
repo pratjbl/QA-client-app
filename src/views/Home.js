@@ -33,7 +33,9 @@ const Home = () => {
     hideResetPwdLink: false,
     soes: false,
     ssp: false,
-    action:""
+    action:"",
+    f2rt:"",
+    f2rs:"",
   });
 
   const currentValue = useSelector((state) => state.counter.value);
@@ -58,6 +60,13 @@ const Home = () => {
       action: e.target.value,
     });
     dispatch(addNewKeyValuePair({ key: "action", value: e.target.value }));
+  };
+  const Changef2rs = (e) => {
+    setCurrentQuery({
+      ...currentQuery,
+      f2rs: e.target.value,
+    });
+    dispatch(addNewKeyValuePair({ key: "f2rs", value: e.target.value }));
   };
   return (
     <Fragment>
@@ -142,6 +151,35 @@ const Home = () => {
             >
               <option value="Default">Default</option>
               <option value="force_verification">Force Verification</option>
+            </select>
+          </div>
+        <div style={{ fontWeight: 700 }}>
+          f2rs : 
+            <select
+              style={{
+                marginLeft: "1rem",
+                marginBottom: "1rem",
+              }}
+              value={currentQuery.f2rs}
+              onChange={Changef2rs}
+            >
+              <option value="">Default</option>
+              <option value="ADMIN">Admin</option>
+              <option value="PRODUCT_LOUD_REGISTRATION_TO_REAL">ProductLoudRegistrationToReal</option>
+              <option value="ONE_TIME_CREDENTIAL">OneTimeCredential</option>
+              <option value="MPC">mpc</option>
+              <option value="M1A">m1a</option>
+              <option value="WSS">wss</option>
+              <option value="VDS">vds</option>
+              <option value="WPS">wps</option>
+              <option value="CMAC">cmac</option>
+              <option value="M1AC">m1ac</option>
+              <option value="SB">sb</option>
+              <option value="WA">wa</option>
+              <option value="VZM1A">vzm1a</option>
+              <option value="TNMYACCOUNT">tnmyaccount</option>
+              <option value="WTNKEYCARDA">tnkeycard</option>
+              <option value="SDKVZ">sdk-vz</option>
             </select>
           </div>
           {currentQuery?.landing_screen === "register" ? (
