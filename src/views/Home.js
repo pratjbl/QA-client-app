@@ -165,21 +165,21 @@ const Home = () => {
             >
               <option value="">Default</option>
               <option value="ADMIN">Admin</option>
-              <option value="PRODUCT_LOUD_REGISTRATION_TO_REAL">ProductLoudRegistrationToReal</option>
-              <option value="ONE_TIME_CREDENTIAL">OneTimeCredential</option>
-              <option value="MPC">mpc</option>
-              <option value="M1A">m1a</option>
-              <option value="WSS">wss</option>
-              <option value="VDS">vds</option>
-              <option value="WPS">wps</option>
-              <option value="CMAC">cmac</option>
-              <option value="M1AC">m1ac</option>
-              <option value="SB">sb</option>
-              <option value="WA">wa</option>
-              <option value="VZM1A">vzm1a</option>
-              <option value="TNMYACCOUNT">tnmyaccount</option>
-              <option value="WTNKEYCARDA">tnkeycard</option>
-              <option value="SDKVZ">sdk-vz</option>
+              <option value="ProductLoudRegistrationToReal">ProductLoudRegistrationToReal</option>
+              <option value="OneTimeCredential">OneTimeCredential</option>
+              <option value="mpc">mpc</option>
+              <option value="m1a">m1a</option>
+              <option value="wss">wss</option>
+              <option value="vds">vds</option>
+              <option value="wps">wps</option>
+              <option value="cmac">cmac</option>
+              <option value="m1ac">m1ac</option>
+              <option value="sb">sb</option>
+              <option value="wa">wa</option>
+              <option value="vzm1a">vzm1a</option>
+              <option value="tnmyaccount">tnmyaccount</option>
+              <option value="tnkeycard">tnkeycard</option>
+              <option value="sdk-vz">sdk-vz</option>
             </select>
           </div>
           {currentQuery?.landing_screen === "register" ? (
