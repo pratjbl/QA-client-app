@@ -28,6 +28,8 @@ const Home = () => {
     enableMSASignUp:false,
     enableGoogleLogin:false,
     enableGoogleSignup:false,
+    enableAppleLogin:false,
+    enableAppleSignup:false,
     deviceRefId: "",
     hideLoginCTAfromOTP: false,
     hideResetPwdLink: false,
@@ -801,6 +803,109 @@ const Home = () => {
                   });
                   dispatch(
                     addNewKeyValuePair({ key: "enableGoogleSignup", value: true })
+                  );
+                }}
+              >
+                No
+              </button>
+            )}
+          </div>
+              <div
+            style={{
+              display: "flex",
+              marginBottom: "1rem",
+              fontWeight: 700,
+            }}
+          >
+            Enable Apple Login Button{" "}
+            {currentQuery?.enableAppleLogin ? (
+              <button
+                style={{
+                  marginLeft: "1rem",
+                  borderRadius: "2rem",
+                  background: "#43CB2B",
+                  color: "white",
+                  border: "1px solid white",
+                }}
+                onClick={(e) => {
+                  setCurrentQuery({
+                    ...currentQuery,
+                    enableAppleLogin: false,
+                  });
+                  dispatch(
+                    addNewKeyValuePair({ key: "enableAppleLogin", value: false })
+                  );
+                }}
+              >
+                Yes
+              </button>
+            ) : (
+              <button
+                style={{
+                  marginLeft: "1rem",
+                  borderRadius: "2rem",
+                  border: "1px solid white",
+                }}
+                onClick={(e) => {
+                  setCurrentQuery({
+                    ...currentQuery,
+                    enableAppleLogin: true,
+                  });
+                  dispatch(
+                    addNewKeyValuePair({ key: "enableAppleLogin", value: true })
+                  );
+                }}
+              >
+                No
+              </button>
+            )}
+          </div>
+          <div
+            style={{
+              display: "flex",
+              marginBottom: "1rem",
+              fontWeight: 700,
+            }}
+          >
+            Enable Apple Signup Button{" "}
+            {currentQuery?.enableAppleSignup ? (
+              <button
+                style={{
+                  marginLeft: "1rem",
+                  borderRadius: "2rem",
+                  background: "#43CB2B",
+                  color: "white",
+                  border: "1px solid white",
+                }}
+                onClick={(e) => {
+                  setCurrentQuery({
+                    ...currentQuery,
+                    enableAppleSignup: false,
+                  });
+                  dispatch(
+                    addNewKeyValuePair({
+                      key: "enableAppleSignup",
+                      value: false,
+                    })
+                  );
+                }}
+              >
+                Yes
+              </button>
+            ) : (
+              <button
+                style={{
+                  marginLeft: "1rem",
+                  borderRadius: "2rem",
+                  border: "1px solid white",
+                }}
+                onClick={(e) => {
+                  setCurrentQuery({
+                    ...currentQuery,
+                    enableAppleSignup: true,
+                  });
+                  dispatch(
+                    addNewKeyValuePair({ key: "enableAppleSignup", value: true })
                   );
                 }}
               >
