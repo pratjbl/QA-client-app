@@ -92,6 +92,7 @@ const NavBar = (props) => {
             soes: currentValue?.soes,
             enableMSA: currentValue?.enableMSALogin,
             enableGoogle: currentValue?.enableGoogleLogin,
+            enableApple: currentValue?.enableAppleLogin
           },
           SignUp: {
             hideGoogleButton: currentValue?.hideGoogleSignUp,
@@ -105,6 +106,7 @@ const NavBar = (props) => {
                 : null,
             enableMSA: currentValue?.enableMSASignUp,
             enableGoogle: currentValue?.enableGoogleSignup,
+            enableApple: currentValue?.enableAppleSignup
           },
           mode: currentValue?.mode,
         },
